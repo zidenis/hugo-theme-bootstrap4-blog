@@ -1,0 +1,32 @@
+- id: about
+  translation: "سجا"
+
+- id: home
+  translation: "بعير"
+
+- id: recentPosts
+  translation: "دججا"
+
+- id: readMore
+  translation: "← اقرأ أكثر"
+
+- id: translations
+  translation: "فدسج"
+
+- id: share
+  translation: "Share"
+
+- id: paginatorPrevious
+  translation: "Previous page"
+
+- id: paginatorNext
+  translation: "Next page"
+
+- id: cookieMessage
+  translation: "This website uses cookies."
+
+- id: cookieLink
+  translation: "Learn more."
+
+- id: cookieDismiss
+  translation: "Got it!"

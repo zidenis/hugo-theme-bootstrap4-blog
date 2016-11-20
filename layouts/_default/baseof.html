@@ -10,7 +10,11 @@
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
     {{ "<!-- combined, minified CSS -->" | safeHTML }}
+    {{ if eq .Lang "ar"}}
+    <link href="{{ .Site.BaseURL }}css/style.rtl.css" rel="stylesheet">
+    {{ else }}
     <link href="{{ .Site.BaseURL }}css/style.css" rel="stylesheet">
+    {{ end }}
 
     {{ if .RSSLink }}
     {{ "<!-- RSS 2.0 feed -->" | safeHTML }}
