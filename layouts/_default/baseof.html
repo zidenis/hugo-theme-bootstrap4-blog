@@ -34,29 +34,31 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="nav blog-nav">
-          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}">{{ i18n "home" }}</a>
-          {{- $currentURL := .URL | absLangURL -}}
+          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}"><span id="datad-logo">D</span></a>
+          {{ $currentRelURL := .URL | relLangURL }}
           {{ if .Site.Params.custom_navbar }}
           {{ range .Site.Menus.navbar }}
-          {{ $menuURL := .URL | absLangURL }}
-          <a class="nav-link{{ if eq $menuURL $currentURL }} active{{ end }}" href="{{.URL | absURL }}">{{ .Name }}</a>
-          {{ end }}
+          {{ $menuRelURL := .URL | relLangURL }}
+          <a class="nav-link {{ if eq $menuRelURL $currentRelURL }}active{{ end }}" href="{{.URL | absURL }}">
+             <img src="{{ .Identifier }}" alt="{{ .Name }}"> 
+          </a>
+          {{ end }} 
           {{ else }}
           {{ range where .Site.RegularPages "Type" "!=" "post" }}
-          {{ $permalinkURL := .Permalink | absLangURL }}
-          <a class="nav-link{{ if eq $permalinkURL $currentURL }} active{{ end }}" href="{{ .Permalink }}">{{ .Title }}</a>
+          {{ $permalinkRelURL := .Permalink | relLangURL }}
+          <a class="nav-link {{ if eq $permalinkRelURL $currentRelURL }}active{{ end }}" href="{{ .Permalink }}">{{ .Title }}</a>
           {{ end }}
           {{ end }}
         </nav>
       </div>
     </div>
 
-    <header class="blog-header">
+    <!-- <header class="blog-header">
       <div class="container">
         <h1 class="blog-title"><a href="{{ .Site.BaseURL }}" rel="home">{{ .Site.Title | safeHTML }}</a></h1>
         {{ if .Site.Params.description }}<p class="lead blog-description">{{ .Site.Params.description | markdownify }}</p>{{ end }}
       </div>
-    </header>
+    </header> -->
 
     <div class="container">
       <div class="row">
@@ -78,7 +80,7 @@
       {{ if .Site.Copyright }}
       {{ .Site.Copyright | markdownify }}
       {{ else }}
-      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      created with <a class="discreteLink" href="https://gohugo.io" target="_blank">Hugo</a> and <a class="discreteLink"  href="https://github.com/alanorth/hugo-theme-bootstrap4-blog" target="_blank">hugo-theme-bootstrap4-blog</a>
       {{ end }}
       </p>
       <p>
